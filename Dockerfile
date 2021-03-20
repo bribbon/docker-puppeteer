@@ -13,8 +13,10 @@ MAINTAINER sub1to Software
 # https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#running-puppeteer-in-docker
 
 RUN apt-get update \
+
     && apt-get install -y wget gnupg ca-certificates procps libxss1 \
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    
     && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
     && apt-get update \
     # We install Chrome to get all the OS level dependencies, but Chrome itself
@@ -37,7 +39,7 @@ RUN apk add --no-cache --update curl ca-certificates openssl git tar bash sqlite
 USER container
 WORKDIR /home/container
 
-ENV  USER=container HOME=/home/container
+ENV USER=container HOME=/home/container
 
 COPY ./entrypoint.sh /entrypoint.sh
 
