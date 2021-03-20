@@ -3,7 +3,7 @@
 # Environment: Nodejs
 # Minimum Panel Version: 1.3.1
 # ----------------------------------
-FROM node:14.16.0-buster-slim@sha256:ffc15488e56d99dbc9b90d496aaf47901c6a940c077bc542f675ae351e769a12
+FROM openjdk:17-jdk-alpine@sha256:a140da5349ba840910bc0806d8997af1b8ee6dbbd9fff01a2fd6c927d5152ea6
 
 MAINTAINER sub1to Software
 
@@ -30,6 +30,9 @@ RUN apt-get update \
 # Install Puppeteer under /node_modules so it's available system-wide
 ADD package.json package-lock.json /
 RUN npm install
+
+RUN apk add --no-cache --update curl ca-certificates openssl git tar bash sqlite fontconfig \
+    && adduser --disabled-password --home /home/container container
 
 USER container
 WORKDIR /home/container
