@@ -31,9 +31,6 @@ RUN apt-get update \
 ADD package.json package-lock.json /
 RUN npm install
 
-RUN apk add --no-cache --update curl ca-certificates openssl git tar bash sqlite fontconfig \
-    && adduser --disabled-password --home /home/container container
-
 USER container
 WORKDIR /home/container
 
