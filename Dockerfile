@@ -3,7 +3,7 @@
 # Environment: Nodejs
 # Minimum Panel Version: 1.3.1
 # ----------------------------------
-FROM node:15.12.0-buster-slim@sha256:9d156955dbfcb3f0b1e2fa5e9855e674e21cb25265ee20e7ee5443c6d79f1be6
+FROM openjdk:8-jdk-alpine
 
 MAINTAINER sub1to Software
 
