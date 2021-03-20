@@ -11,9 +11,8 @@ FROM openjdk:17-jdk-alpine
 
 MAINTAINER sub1to Software
 
-# Pterodactyl dependencies & create container user
+# Pterodactyl dependencies
 RUN apk add --no-cache --update curl ca-certificates openssl git tar bash sqlite fontconfig \
-    && adduser --disabled-password --home /home/container container \
 
 # Chrome dependencies
     && apt update \
@@ -29,7 +28,10 @@ RUN apk add --no-cache --update curl ca-certificates openssl git tar bash sqlite
     && apt install -y google-chrome-stable \
     && rm -rf /var/lib/apt/lists/* \
     && wget --quiet https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh -O /usr/sbin/wait-for-it.sh \
-    && chmod +x /usr/sbin/wait-for-it.sh
+    && chmod +x /usr/sbin/wait-for-it.sh \
+
+    # Create container user
+    && adduser --disabled-password --home /home/container container
 
 # Install Puppeteer under /node_modules so it's available system-wide
 ADD package.json package-lock.json /
