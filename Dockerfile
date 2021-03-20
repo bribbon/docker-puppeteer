@@ -7,10 +7,12 @@ FROM alpine:edge
 
 MAINTAINER sub1to Software
 
-
+# Pterodactyl dependencies and create container user
 RUN apk add --no-cache --update curl ca-certificates openssl git tar bash sqlite fontconfig \
-    && adduser --disabled-password --home /home/container container \
+    && adduser --disabled-password --home /home/container container
+
 # Installs latest Chromium (89) package.
+RUN apk add --no-cache \
       chromium \
       nss \
       freetype \
