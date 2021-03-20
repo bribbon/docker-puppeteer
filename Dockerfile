@@ -30,7 +30,7 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
 RUN yarn add puppeteer@6.0.0
 
 # Add user so we don't need --no-sandbox.
-RUN adduser -g container -h /home/container \
+RUN adduser --disabled-password --home /home/container container \
     && mkdir -p /home/container/Downloads /app \
     && chown -R container /home/container \
     && chown -R container /app
