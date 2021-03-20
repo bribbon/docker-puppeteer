@@ -31,9 +31,7 @@ RUN yarn add puppeteer@6.0.0
 
 # Add user so we don't need --no-sandbox.
 RUN adduser --disabled-password --home /home/container container \
-    && mkdir -p /home/container/Downloads /app \
-    && chown -R container /home/container \
-    && chown -R container /app
+    && mkdir -p /home/container/Downloads /app
 
 # Run everything after as non-privileged user.
 USER container
