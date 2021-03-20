@@ -2,7 +2,7 @@
 cd /home/container
 
 # Output Current Java Version
-echo " => Installed Node:$ ${node -v}" ## only really needed to show what version is being used. Should be changed for different applications
+node -v ## only really needed to show what version is being used. Should be changed for different applications
 
 # Replace Startup Variables
 MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')`

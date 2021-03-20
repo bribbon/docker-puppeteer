@@ -3,7 +3,7 @@
 # Environment: Nodejs
 # Minimum Panel Version: 1.3.1
 # ----------------------------------
-FROM openjdk:8-jdk-alpine
+FROM openjdk:17-jdk-alpine
 
 MAINTAINER sub1to Software
 
@@ -35,9 +35,9 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
 RUN yarn add puppeteer@6.0.0
 
 USER container
-WORKDIR /home/container
+ENV  USER=container HOME=/home/container
 
-ENV USER=container HOME=/home/container
+WORKDIR /home/container
 
 COPY ./entrypoint.sh /entrypoint.sh
 
