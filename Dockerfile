@@ -8,7 +8,7 @@ FROM alpine:edge
 MAINTAINER sub1to Software
 
 # Pterodactyl dependencies
-RUN apk add --no-cache --update curl ca-certificates openssl git tar bash sqlite fontconfig \
+RUN apk add --no-cache --update curl ca-certificates openssl git tar bash sqlite fontconfig
 
 # Installs latest Chromium (89) package.
 RUN apk add --no-cache \
