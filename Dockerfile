@@ -7,7 +7,7 @@
 # https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#running-puppeteer-in-docker
 # ----------------------------------
 
-FROM openjdk:8-jdk-alpine
+FROM openjdk:17-jdk-alpine
 
 MAINTAINER sub1to Software
 
