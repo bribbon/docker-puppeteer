@@ -1,24 +1,22 @@
 # ----------------------------------
 # Pterodactyl Core Dockerfile
-# Environment: Nodejs14, Puppeteer
+# Environment: Nodejs
 # Minimum Panel Version: 1.3.1
-#
-# Initially based upon:
-# https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#running-puppeteer-in-docker
 # ----------------------------------
-
-FROM openjdk:17-jdk-alpine
+FROM node:14.16.0-buster-slim@sha256:ffc15488e56d99dbc9b90d496aaf47901c6a940c077bc542f675ae351e769a12
 
 MAINTAINER sub1to Software
 
-# Pterodactyl dependencies & create container user
-RUN apk add --no-cache --update curl ca-certificates openssl git tar bash sqlite fontconfig \
-    && adduser --disabled-password --home /home/container container
+# A minimal Docker image with Node and Puppeteer
+#
+# Initially based upon:
+# https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#running-puppeteer-in-docker
 
-# Chrome dependencies
 RUN apt-get update \
+
     && apt-get install -y wget gnupg ca-certificates procps libxss1 \
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+
     && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
     && apt-get update \
     # We install Chrome to get all the OS level dependencies, but Chrome itself
@@ -30,10 +28,6 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && wget --quiet https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh -O /usr/sbin/wait-for-it.sh \
     && chmod +x /usr/sbin/wait-for-it.sh
-
-# Tell Puppeteer to skip installing Chrome. We'll be using the installed package.
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
-    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
 # Install Puppeteer under /node_modules so it's available system-wide
 ADD package.json package-lock.json /
