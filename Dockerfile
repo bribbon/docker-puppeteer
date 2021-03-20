@@ -36,7 +36,7 @@ RUN addgroup -S container && adduser -S -g container container \
 # Run everything after as non-privileged user.
 USER container
 
-ENV  USER=container HOME=/home/pptruser
+ENV  USER=container HOME=/home/container
 
 WORKDIR /home/container
 
