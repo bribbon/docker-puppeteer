@@ -3,7 +3,7 @@
 # Environment: Nodejs
 # Minimum Panel Version: 1.3.1
 # ----------------------------------
-FROM openjdk:17-jdk-alpine@sha256:a140da5349ba840910bc0806d8997af1b8ee6dbbd9fff01a2fd6c927d5152ea6
+FROM node:14.16.0-buster-slim@sha256:ffc15488e56d99dbc9b90d496aaf47901c6a940c077bc542f675ae351e769a12
 
 MAINTAINER sub1to Software
 
@@ -13,10 +13,8 @@ MAINTAINER sub1to Software
 # https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#running-puppeteer-in-docker
 
 RUN apt-get update \
-
     && apt-get install -y wget gnupg ca-certificates procps libxss1 \
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    
     && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
     && apt-get update \
     # We install Chrome to get all the OS level dependencies, but Chrome itself
