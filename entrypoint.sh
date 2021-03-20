@@ -1,12 +1,12 @@
 #!/bin/bash
-cd /home/pptruser
+cd /home/container
 
 # Output Current Java Version
-node -version ## only really needed to show what version is being used. Should be changed for different applications
+node -v ## only really needed to show what version is being used. Should be changed for different applications
 
 # Replace Startup Variables
 MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
-echo ":/home/pptruser$ ${MODIFIED_STARTUP}"
+echo ":/home/container$ ${MODIFIED_STARTUP}"
 
 # Run the Server
 ${MODIFIED_STARTUP}
