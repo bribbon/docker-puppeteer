@@ -3,7 +3,7 @@
 # Environment: Nodejs
 # Minimum Panel Version: 1.3.1
 # ----------------------------------
-FROM node:14.16.0-buster-slim@sha256:ffc15488e56d99dbc9b90d496aaf47901c6a940c077bc542f675ae351e769a12
+FROM node:15.12.0-buster-slim@sha256:9d156955dbfcb3f0b1e2fa5e9855e674e21cb25265ee20e7ee5443c6d79f1be6
 
 MAINTAINER sub1to Software
 
