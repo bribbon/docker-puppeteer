@@ -7,6 +7,8 @@ FROM node:14.16.0-buster-slim@sha256:ffc15488e56d99dbc9b90d496aaf47901c6a940c077
 
 MAINTAINER sub1to Software
 
+RUN npm install -g npm@latest
+
 # A minimal Docker image with Node and Puppeteer
 #
 # Initially based upon:
