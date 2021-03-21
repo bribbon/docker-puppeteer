@@ -4,8 +4,9 @@ cd /home/container
 # Make internal Docker IP address available to processes.
 export INTERNAL_IP=`ip route get 1 | awk '{print $NF;exit}'`
 
-# Output Current Java Version
-node -v ## only really needed to show what version is being used. Should be changed for different applications
+# Output Current npm & node Versions
+npm -v
+node -v
 
 # Replace Startup Variables
 MODIFIED_STARTUP=$(echo -e ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')
