@@ -3,7 +3,6 @@ cd /home/container
 
 # Output Current node version
 echo " "
-Node:
 node -v
 echo " "
 
