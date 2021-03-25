@@ -30,7 +30,7 @@ RUN apt-get update \
 
 # Install Puppeteer under /node_modules so it's available system-wide
 ADD package.json package-lock.json /
-RUN npm install
+RUN sudo npm install
 
 USER container
 ENV  USER=container HOME=/home/container
